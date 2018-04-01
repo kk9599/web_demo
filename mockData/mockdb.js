@@ -8,7 +8,8 @@ module.exports = {
     "result|1": [{
       "author": "@name",
       "comment": "@cparagraph",
-      "date": "@datetime"
+      "date": "@datetime",
+      "nanme":"@name"
     }]
   }),
   addComment: Mock.mock({

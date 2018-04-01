@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
 const browserSync = require('browser-sync').create();
-const server = path.resolve(__dirname, '../mockData');
+const server = path.resolve(__dirname, '../../mockData');
 // browser-sync配置，配置里启动nodemon任务
 gulp.task('browser-sync', ['nodemon'], function() {
   browserSync.init(null, {

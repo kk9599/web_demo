@@ -13,11 +13,12 @@ function requireAuth(to,from,next){
           redirect: to.fullPath
         }
       })
+    }
      else {
         next()
      }
 
-    }
+    
 }
 
 
