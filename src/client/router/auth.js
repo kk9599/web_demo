@@ -2,7 +2,7 @@
  * Created by kevinz on 12/23/2017.
  */
 export default {
-  login(email, pass, cb){
+  login(email, pass, cb) {
     cb = arguments[arguments.length - 1]
     if (localStorage.token) {
       if (cb) cb(true)
@@ -11,7 +11,7 @@ export default {
     }
     pretendRequest(email, pass, (res) => {
       if (res.authenticated) {
-        localStorage.token= res.token
+        localStorage.token = res.token
 
       }
     })

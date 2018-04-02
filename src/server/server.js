@@ -10,12 +10,12 @@ const router = jsonServer.router(db)
 server.use(middlewares)
 
 server.use((request, res, next) => {
-  request.method = 'GET';
-  next();
+	request.method = 'GET';
+	next();
 })
 
 server.use(router)
 
 server.listen(3000, () => {
-  console.log('JSON Server is running')
+	console.log('JSON Server is running')
 })
