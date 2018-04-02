@@ -4,9 +4,9 @@ const server = jsonServer.create()
 const middlewares = jsonServer.defaults()
 const db = require('../../mockData/mockdb.js')
 const router = jsonServer.router(db)
-//const routes = require('./router')
+//const routes = require('./routers')
 
-//const router = jsonServer.router(path.join(__dirname, '../mockData/db.json'))
+//const routers = jsonServer.routers(path.join(__dirname, '../mockData/db.json'))
 server.use(middlewares)
 
 server.use((request, res, next) => {

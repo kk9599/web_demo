@@ -3,6 +3,8 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
+const glob = require('glob')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -18,12 +20,22 @@ const createLintingRule = () => ({
     emitWarning: !config.dev.showEslintErrorsInOverlay
   }
 })
+//need to reconstruct l
+const entries = {}
+const chunks = []
+
+glob.sync('./src/client/pages/**/app.js').forEach(path => {
+  const chunk = path.split('./src/client/pages/')[1].split('/app.js')[0]
+  entries[chunk] = path
+  chunks.push(chunk)
+})
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    app: './src/client/client-entry.js'
-  },
+  entry: entries,
+  // entry: {
+  //   app: './src/client/client-entry.js'
+  // },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -36,7 +48,6 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src/client'),
-      
     }
   },
   module: {
